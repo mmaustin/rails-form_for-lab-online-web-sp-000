@@ -14,6 +14,16 @@ class SchoolClassesController < ApplicationController
         redirect_to school_class_path(@school)
     end
 
+    def update
+        @school = SchoolClass.find(params[:id])
+        @school.update(post_params(:title, :room_number))
+        redirect_to school_class_path(@school)
+    end
+    
+    def edit
+        @school = SchoolClass.find(params[:id])
+    end
+
     private
 
     def post_params(*args)
